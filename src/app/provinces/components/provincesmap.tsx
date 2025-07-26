@@ -13,7 +13,6 @@ export default function ProvinceMap() {
   const [countryoutlines, setcountryoutlines] = useState<
     [number, string[]][] | undefined
   >(undefined);
-  const { emptylands } = useDataContext();
   useEffect(() => {
     async function FetchData() {
       const response = await fetch("/provincesmap/terrcolors2.json");
@@ -70,8 +69,6 @@ export default function ProvinceMap() {
                           })
                           .indexOf(true)
                       ][1]
-                    : emptylands.includes(index + 1)
-                    ? "none"
                     : terraincolors[index][1]
                 }
                 stroke={
@@ -125,14 +122,7 @@ export default function ProvinceMap() {
         </svg>
       );
     }
-  }, [
-    paths,
-    emptylands,
-    countries,
-    terraincolors,
-    countryprovinces,
-    countryoutlines,
-  ]);
+  }, [paths, countries, terraincolors, countryprovinces, countryoutlines]);
   return (
     <>
       <div className="w-[1536px] mt-16 h-[552px] bg-neutral-900 flex items-center justify-center">
