@@ -17,11 +17,12 @@ type GameContextType = {
 const GameContext = createContext<GameContextType | null>(null);
 
 export const GameContextProvider = ({ children }: { children: ReactNode }) => {
-  const [currentregion, setcurrentregion] = useState([0, 2]);
+  const [currentregion, setcurrentregion] = useState([0, 0]);
   const [countrylist, setcountrylist] = useState<number[]>([
-    8, 11, 38, 46, 49, 54, 60, 73, 163, 214, 230, 292, 331, 336, 337, 359, 440,
+    4, 24, 63, 66, 80, 88, 114, 128, 139, 183, 297, 346, 347, 391, 392, 440,
+    441, 515, 580, 636,
   ]);
-  const [mapBbox, setMapBbox] = useState<number[]>([2909, 575, 182, 225]);
+  const [mapBbox, setMapBbox] = useState<number[]>([2537, 430, 303, 208]);
   const [isitcustom, setisitcustom] = useState(false);
   const [isitloading, setisitloading] = useState(false);
   return (
