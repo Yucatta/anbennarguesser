@@ -2,15 +2,23 @@
 import { useDataContext } from "@/context/DataContext";
 import { useGameContext } from "@/context/GameContext";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-const Continents = ["Cannor", "Haless", "Sarhal", "Aelantir", "Halann"];
+import React from "react";
+// import { useEffect, useState } from "react";
+const Continents = [
+  "Cannor",
+  "Haless",
+  "Sarhal",
+  "Aelantir",
+  "Halann",
+  "By Development",
+];
 interface Props {
   regionselect?: () => void;
 }
 const RegionSelect = ({ regionselect }: Props) => {
-  // const { regionnames, regions } = useDataContext();
-  const [regionnames, setnames] = useState<string[][] | null>(null);
-  const [regions, setregions] = useState<number[][][][] | null>(null);
+  const { regionnames, regions } = useDataContext();
+  // const [regionnames, setnames] = useState<string[][] | null>(null);
+  // const [regions, setregions] = useState<number[][][][] | null>(null);
 
   const {
     setcurrentregion,
@@ -22,23 +30,23 @@ const RegionSelect = ({ regionselect }: Props) => {
   } = useGameContext();
   const router = useRouter();
 
-  useEffect(() => {
-    async function FetchData() {
-      const response = await fetch("regions.json");
-      const text: [string, number[], number[]][][] = await response.json();
-      const names = text.map((continent, index) =>
-        continent.map((region) => region[0])
-      );
-      setregions(
-        text.map((continent, index) =>
-          continent.map((region) => [region[1], region[2]])
-        )
-      );
+  // useEffect(() => {
+  //   async function FetchData() {
+  //     const response = await fetch("regions.json");
+  //     const text: [string, number[], number[]][][] = await response.json();
+  //     const names = text.map((continent, index) =>
+  //       continent.map((region) => region[0])
+  //     );
+  //     setregions(
+  //       text.map((continent, index) =>
+  //         continent.map((region) => [region[1], region[2]])
+  //       )
+  //     );
 
-      setnames(names);
-    }
-    FetchData();
-  }, []);
+  //     setnames(names);
+  //   }
+  //   FetchData();
+  // }, []);
 
   function regionclick(indexofregion: number[]) {
     if (!regions) return;
@@ -59,31 +67,8 @@ const RegionSelect = ({ regionselect }: Props) => {
             return (
               <div
                 key={index}
-                className="w-70 h-125 rounded-2xl space-y-5 mb-5 flex flex-col shadow-lg shadow-gray-black bg-[rgb(48,48,48)] justify-start items-center"
+                className="w-70 h-90 rounded-2xl space-y-5 mb-5 flex flex-col shadow-lg shadow-gray-black bg-[rgb(48,48,48)] justify-start items-center"
               >
-                {/* <div className="bg-[rgb(0,0,200)]  w-50 h-50 mt-5 border-4 border-[rgb(160,160,160)] overflow-hidden object-center justify-center rounded-full">
-                  <img
-                    onClick={() => {
-                      const indexofregion = [4, index === 4 ? 6 : index];
-                      regionclick(indexofregion);
-                    }}
-                    style={{ cursor: "pointer" }}
-                    className={
-                      index === 4
-                        ? "mt-15 scale-140"
-                        : index === 2
-                        ? "scale-120"
-                        : index === 1
-                        ? "scale-120 mt-3"
-                        : index === 3
-                        ? "mt-5 scale-120"
-                        : index === 5
-                        ? "scale-140 mt-12 ml-3"
-                        : "mt-10 scale-160"
-                    }
-                    src={`/continents/${index}.svg`}
-                  ></img>
-                </div> */}
                 <div
                   style={{ textShadow: "4px 4px 8px rgba(0,0,0,0.7)" }}
                   className={

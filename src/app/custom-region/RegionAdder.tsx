@@ -24,7 +24,7 @@ const RegionAdder = () => {
   const [allIncludedCountries, setallIncludedCountries] = useState<number[]>(
     []
   );
-  const [highestdevindex, sethighestdevindex] = useState(664);
+  const [highestdevindex, sethighestdevindex] = useState(801);
   const [lowestdevindex, setlowestdevindex] = useState(0);
   const sliderref = useRef<HTMLDivElement | null>(null);
   const allcountrieswithoutunc = allIncludedCountries.filter(
@@ -63,7 +63,7 @@ const RegionAdder = () => {
       }
     }
 
-    const indexofuncolonized = allIncludedCountries.findIndex((id) => id > 664);
+    const indexofuncolonized = allIncludedCountries.findIndex((id) => id > 801);
     if (indexofuncolonized + 1) {
       if (highorlow) {
         const highestindex = Math.round(

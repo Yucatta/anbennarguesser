@@ -21,7 +21,7 @@ export default function AnnotationWrapper() {
     emptylands,
     regions,
   } = useDataContext();
-  const { currentregion, setcurrentregion } = useGameContext();
+  const { currentregion } = useGameContext();
   const { setcorrectanswer, setanswercorrectness } = useMapContext();
   const svgRef = useRef<ReactZoomPanPinchContentRef | null>(null);
   const correctanswerref = useRef<number[]>([-1, -1]);

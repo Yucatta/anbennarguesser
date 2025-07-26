@@ -4,7 +4,14 @@ import Switch from "./Switch";
 import { useDataContext } from "@/context/DataContext";
 import { useGameContext } from "@/context/GameContext";
 import Link from "next/link";
-const Continents = ["Cannor", "Haless", "Sarhal", "Aelantir", "Halann"];
+const Continents = [
+  "Cannor",
+  "Haless",
+  "Sarhal",
+  "Aelantir",
+  "Halann",
+  "By Development",
+];
 const AllBestTimes = () => {
   const { regionnames } = useDataContext();
   const { setisitloading } = useGameContext();
