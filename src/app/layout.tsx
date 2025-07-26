@@ -37,7 +37,6 @@ export default async function RootLayout({
             countries: fetcheddata.countries,
             countryprovinces: fetcheddata.countryprovinces,
             paths: fetcheddata.paths,
-            emptylands: fetcheddata.emptylands,
             countryoutlines: fetcheddata.countryoutlines,
             regionnames: fetcheddata.regionnames,
             countryplace: fetcheddata.countryplaces,

@@ -1,10 +1,8 @@
-import Papa from "papaparse";
 import { cache as reactCache } from "react";
 import fs from "fs";
 import path from "path";
 
 interface AppData {
-  emptylands: number[];
   countries: string[][];
   countryprovinces: number[][];
   paths: string[][];
@@ -18,18 +16,6 @@ interface AppData {
 function loadAllDataOnce(): AppData {
   try {
     const root = process.cwd() + "/public";
-
-    const csvText4 = fs.readFileSync(path.join(root, "seatiles.csv"), "utf-8");
-    const tempids4: number[] = [];
-    Papa.parse<string[]>(csvText4, {
-      header: false,
-      skipEmptyLines: true,
-      complete: (result) => {
-        result.data.forEach((element) => {
-          tempids4.push(+element[0]);
-        });
-      },
-    });
 
     const pathsJson: [number, string[]][] = JSON.parse(
       fs.readFileSync(path.join(root, "provinces.json"), "utf-8")
@@ -49,7 +35,6 @@ function loadAllDataOnce(): AppData {
       fs.readFileSync(path.join(root, "countryplace.json"), "utf-8")
     );
     return {
-      emptylands: tempids4,
       paths: pathsJson.map((province) => province[1]),
       countries: Countries.map((country) => country.slice(0, 3) as string[]),
       countryprovinces: Countries.map((country) => country[3]),

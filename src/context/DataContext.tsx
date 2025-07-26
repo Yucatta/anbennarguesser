@@ -2,7 +2,6 @@
 import { createContext, useContext } from "react";
 
 type DataContextType = {
-  emptylands: number[];
   countries: string[][];
   countryprovinces: number[][];
   countryoutlines: Array<[number, string[]]>;
