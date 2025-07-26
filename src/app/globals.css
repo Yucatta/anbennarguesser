@@ -21,9 +21,9 @@ body {
   background: black;
   font-family: var(--font-jost), sans-serif;
   color: rgb(220, 220, 220);
+  overflow-x: hidden;
   /* overflow: hidden; */
   /* overflow: auto; */
-  overflow-x: hidden;
 }
 
 /* * {

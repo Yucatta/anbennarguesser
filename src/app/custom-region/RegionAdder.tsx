@@ -4,7 +4,7 @@ import { useGameContext } from "@/context/GameContext";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 
-const Continents = ["Europe", "Asia", "Africa", "New World", "World"];
+const Continents = ["Cannor", "Haless", "Sarhal", "Aelantir", "Halann"];
 
 const RegionAdder = () => {
   const router = useRouter();
@@ -28,7 +28,7 @@ const RegionAdder = () => {
   const [lowestdevindex, setlowestdevindex] = useState(0);
   const sliderref = useRef<HTMLDivElement | null>(null);
   const allcountrieswithoutunc = allIncludedCountries.filter(
-    (id) => id < 665
+    (id) => id < 802
   ).length;
 
   useEffect(() => {
@@ -171,7 +171,7 @@ const RegionAdder = () => {
     const countlist = temp.length ? temp : regions[4][6][1];
     setcountrylist(countlist);
     setallIncludedCountries(countlist);
-    sethighestdevindex(countlist.filter((id) => id < 665).length);
+    sethighestdevindex(countlist.filter((id) => id < 802).length);
     setlowestdevindex(0);
   }, [selectedRegions]);
   const sliderbbox = sliderref.current

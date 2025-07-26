@@ -41,7 +41,7 @@ export default async function FetchTimes(
     }
     const cmd = new GetObjectCommand({
       Bucket: BUCKET_NAME,
-      Key: "besttimes.json",
+      Key: "anbennartimes.json",
     });
 
     const response = await s3Client.send(cmd);

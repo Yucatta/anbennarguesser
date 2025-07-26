@@ -20,7 +20,7 @@ export const MapContextProvider = ({ children }: { children: ReactNode }) => {
   const [currentcountry, setcurrentcountry] = useState([-1, -1]);
   const [correctanswer, setcorrectanswer] = useState([-1, -1]);
   const [answercorrectness, setanswercorrectness] = useState(
-    Array(665).fill(0)
+    Array(802).fill(0)
   );
   const [failed, setfailed] = useState(-1);
   const [isitmobile, setisitmobile] = useState(false);

@@ -45,7 +45,7 @@ const Countries = ({ countryindex, findit, countryclick, isitin }: Props) => {
     }
   }, [answercorrectness[countryindex], update, currentregion, pathname]);
   useEffect(() => {
-    if (failed % 700 === countryindex) {
+    if (failed % 1000 === countryindex) {
       aaaaaaaaa++;
       setupdate(aaaaaaaaa);
     }
@@ -123,8 +123,10 @@ const Countries = ({ countryindex, findit, countryclick, isitin }: Props) => {
               isitoktosend = false;
             }, 1000);
           }}
+          onClick={() => console.log(countryindex)}
           onPointerUp={() => {
             if (isitin && pathref.current.length && isitoktosend) {
+              console.log(countryindex);
               clearTimeout(timeinterval.current!);
               countryclick(pathref.current[index2]!.getBBox());
             }

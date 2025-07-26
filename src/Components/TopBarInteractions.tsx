@@ -17,7 +17,7 @@ const TopBarInteractions = ({ startdate, correctness, seconds }: Props) => {
   const scores = useRef<number[][][] | null>(null);
   const personalscores = useRef<number[][][] | null>(null);
   const [isitpassed, setisitpassed] = useState(false);
-  const regionlength = countrylist.filter((id) => id < 665).length;
+  const regionlength = countrylist.filter((id) => id < 802).length;
   const answeredlength = answercorrectness.filter((a) => a > 0).length;
   const isitequal = answeredlength === regionlength;
   useEffect(() => {
@@ -34,7 +34,6 @@ const TopBarInteractions = ({ startdate, correctness, seconds }: Props) => {
     scores: React.RefObject<number[][][] | null>,
     seconds: number
   ) {
-    console.log(currentregion);
     if (
       scores.current &&
       (!scores.current[currentregion[0]][currentregion[1]][1] ||
@@ -61,11 +60,12 @@ const TopBarInteractions = ({ startdate, correctness, seconds }: Props) => {
   useEffect(() => {
     if (isitequal) {
       setisitpassed(true);
-      const templocal = localStorage.getItem("TimesPlayed");
+      const templocal = localStorage.getItem("TimesPlayedanbennar");
+
       if (templocal) {
-        localStorage.setItem("TimesPlayed", `${Number(templocal) + 1}`);
+        localStorage.setItem("TimesPlayedanbennar", `${Number(templocal) + 1}`);
       } else {
-        localStorage.setItem("TimesPlayed", "1");
+        localStorage.setItem("TimesPlayedanbennar", "1");
       }
       if (!isitcustom) {
         const secondstemp = Date.now() - startdate;
@@ -74,13 +74,14 @@ const TopBarInteractions = ({ startdate, correctness, seconds }: Props) => {
         }
         if (CompareScores(personalscores, secondstemp)) {
           localStorage.setItem(
-            "PersonalBestTimes",
+            "PersonalBestTimesanbennar",
             JSON.stringify(personalscores.current)
           );
         }
       }
     }
   }, [isitequal, isitcustom]);
+
   const thisglobal =
     scores.current && currentregion[0] !== -1
       ? scores.current[currentregion[0]][currentregion[1]]
@@ -102,25 +103,18 @@ const TopBarInteractions = ({ startdate, correctness, seconds }: Props) => {
       scores.current = data.BestTimes;
     }
     besttimes();
-    const localstorage = localStorage.getItem("PersonalBestTimes");
+    // const localstorage = localStorage.getItem("PersonalBestTimesanbennar");
+    const localstorage = "";
     if (localstorage) {
       const temp = JSON.parse(localstorage);
-      if (temp.length !== 6) {
-        temp.push(Array(11).fill([0, 0]));
-        personalscores.current = temp;
-        localStorage.setItem(
-          "PersonalBestTimes",
-          JSON.stringify(personalscores.current)
-        );
-      } else {
-        personalscores.current = temp;
-      }
+
+      personalscores.current = temp;
     } else {
-      personalscores.current = [14, 18, 9, 8, 7, 11].map((len) =>
+      personalscores.current = [30, 30, 30, 30, 30, 30].map((len) =>
         Array.from({ length: len }, () => [0, 0])
       );
       localStorage.setItem(
-        "PersonalBestTimes",
+        "PersonalBestTimesanbennar",
         JSON.stringify(personalscores.current)
       );
     }

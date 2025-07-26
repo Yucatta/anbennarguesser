@@ -1,11 +1,8 @@
 import json,csv
 
-bboxes = []
-with open("bboxes2.csv",mode="r",newline="")as f:
-    reader = csv.reader(f)
-    for row in reader:
-        bboxes.append([int(row[1]),int(row[2]),int(row[3]),int(row[4])])
-guessregions = []
+with open("anbennarbboxes.json")as f:
+    bboxes = json.load(f) 
+
 with open("guessregions.json",mode="r") as f:
     guessregions = json.load(f)
 regionnames = []
@@ -13,13 +10,35 @@ with open("regions.txt",mode="r") as f:
     for line in f:
         regionnames.append(line.strip())
 
-# print(regionnames)
-regions = []
-for i,continent in enumerate(guessregions):
-    # for j,region in enumerate(continent):
-    regions.append([regionnames[i],bboxes[i],guessregions[i]])  ;            
+for i,region in enumerate(guessregions):
+    temp  = []
+    for j,id in enumerate(region):
+        if not id in temp:
+            temp.append(id)
+    guessregions[i] = temp
 
-with open("organizedguessregions.json",mode="w") as f:
+regions = []
+for i,region in enumerate(guessregions):
+    bbox = False
+    for j,id in enumerate(region):
+        if id>801:
+            break
+        if not bbox:
+            bbox =bboxes[id]
+            continue
+        for k,edge in enumerate(bboxes[id]):
+            if (k < 2) :
+                if (edge < bbox[k]): 
+                    bbox[k] = edge 
+            else:
+                if edge > bbox[k]:
+                    bbox[k] = edge
+            
+    print(regionnames[i],[bbox[0],bbox[1],bbox[2]-bbox[0],bbox[3]-bbox[1]],bbox)
+    # for j,region in enumerate(continent):
+    regions.append([regionnames[i],[bbox[0],bbox[1],bbox[2]-bbox[0],bbox[3]-bbox[1]],guessregions[i]])        
+
+with open("regions.json",mode="w") as f:
     json.dump(regions,f,indent=2)
 # print(regions)
 

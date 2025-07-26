@@ -2,15 +2,14 @@ import json ,csv
 countries = []
 with open("countryprovinces.json",mode="r") as f:
     countries = json.load(f)
-provinces = []
-with open("provinces.csv" ,mode="r") as f:
-    reader = csv.reader(f) 
-    for row in reader:
-        provinces.append(int(row[2]))
+with open("provincesdevelopments.json" ,mode="r") as f:
+    provinces = json.load(f)
 
-for i in range(0,665):
+for i in range(0,802):
     dev  = 0
-    for id in  countries[i][3]:
+    for id in countries[i][3]:
+        if id>7038:
+            break
         dev+= provinces[id-1]
     countries[i].append(dev)
 

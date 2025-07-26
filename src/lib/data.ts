@@ -5,12 +5,10 @@ import path from "path";
 
 interface AppData {
   emptylands: number[];
-  areapaths: Array<[number, string[]]>;
   countries: string[][];
   countryprovinces: number[][];
   paths: string[][];
   countryoutlines: Array<[number, string[]]>;
-  terraincolors: Array<[number, string]>;
   regions: number[][][][];
   regionnames: string[][];
   countryplaces: number[][][][];
@@ -33,11 +31,7 @@ function loadAllDataOnce(): AppData {
       },
     });
 
-    const areapaths = JSON.parse(
-      fs.readFileSync(path.join(root, "areaoutlines.json"), "utf-8")
-    );
-
-    const pathsJson = JSON.parse(
+    const pathsJson: [number, string[]][] = JSON.parse(
       fs.readFileSync(path.join(root, "provinces.json"), "utf-8")
     );
     const Countries: Array<[string, string, string, number[], number]> =
@@ -47,9 +41,7 @@ function loadAllDataOnce(): AppData {
     const countryoutlines: Array<[number, string[]]> = JSON.parse(
       fs.readFileSync(path.join(root, "countryoutlines.json"), "utf-8")
     );
-    const terraincolors: Array<[number, string]> = JSON.parse(
-      fs.readFileSync(path.join(root, "provinceterraincolors.json"), "utf-8")
-    );
+
     const Regions: [string, number[], number[]][][] = JSON.parse(
       fs.readFileSync(path.join(root, "regions.json"), "utf-8")
     );
@@ -58,8 +50,7 @@ function loadAllDataOnce(): AppData {
     );
     return {
       emptylands: tempids4,
-      areapaths: areapaths,
-      paths: Object.entries(pathsJson),
+      paths: pathsJson.map((province) => province[1]),
       countries: Countries.map((country) => country.slice(0, 3) as string[]),
       countryprovinces: Countries.map((country) => country[3]),
       countrydevelopments: Countries.map((country) => country[4]),
@@ -67,7 +58,6 @@ function loadAllDataOnce(): AppData {
         country[0],
         country[1],
       ]),
-      terraincolors: terraincolors,
       regions: Regions.map((continent) =>
         continent.map((region) => [region[1], region[2]])
       ),
@@ -77,7 +67,6 @@ function loadAllDataOnce(): AppData {
       countryplaces: countryplace,
     };
   } catch (error) {
-    console.error("Error loading application data:", error);
     throw new Error(
       `Failed to load application data: ${
         error instanceof Error ? error.message : String(error)

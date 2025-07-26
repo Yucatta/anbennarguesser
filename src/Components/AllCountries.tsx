@@ -21,7 +21,6 @@ const AllCountries = ({
     countryprovinces,
     emptylands,
     regions,
-    terraincolors,
   } = useDataContext();
   const { currentregion, countrylist } = useGameContext();
   const { setcorrectanswer, setanswercorrectness, setfailed } = useMapContext();
@@ -30,7 +29,7 @@ const AllCountries = ({
 
   function GetCorrectAnswer(list: number[], badlist: number[]) {
     const filteredids = list
-      .filter((countryid) => countryid < 665)
+      .filter((countryid) => countryid < 802)
       .filter((countryid) => !badlist.includes(countryid));
     const a = filteredids[Math.floor(Math.random() * filteredids.length)];
     return a ? a : -1;
@@ -43,21 +42,21 @@ const AllCountries = ({
       GetCorrectAnswer(countrylist, [firstone]),
     ];
     setcorrectanswer(correctanswerref.current);
-    setanswercorrectness(Array(665).fill(0));
-    answercorrectness.current = Array(665).fill(0);
+    setanswercorrectness(Array(802).fill(0));
+    answercorrectness.current = Array(802).fill(0);
   }, [currentregion, countrylist, regions]);
 
   const Image = useMemo(() => {
     return (
       <>
-        {Array(665)
+        {Array(802)
           .fill(0)
           .map((_, index) => (
             <Countries
               countryindex={index}
               key={
                 answercorrectness.current[index] < -3 || answercorrectness
-                  ? index + 666
+                  ? index + 803
                   : index
               }
               findit={(bbox) => {
@@ -71,7 +70,6 @@ const AllCountries = ({
                   return prev;
                 });
               }}
-              // test
               countryclick={(bbox) => {
                 const xcord = bbox.x + bbox.width / 2;
                 const ycord = bbox.y + bbox.height / 2;
@@ -104,7 +102,7 @@ const AllCountries = ({
                     correctanswerref.current[0] +
                       (answercorrectness.current[correctanswerref.current[0]] +
                         4) *
-                        -700
+                        -1000
                   );
                 }
                 setanswercorrectness(answercorrectness.current);
@@ -118,7 +116,6 @@ const AllCountries = ({
     paths,
     emptylands,
     countries,
-    terraincolors,
     countryprovinces,
     countryoutlines,
     regions,

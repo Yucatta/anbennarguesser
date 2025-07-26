@@ -4,14 +4,7 @@ import Switch from "./Switch";
 import { useDataContext } from "@/context/DataContext";
 import { useGameContext } from "@/context/GameContext";
 import Link from "next/link";
-const Continents = [
-  "Europe",
-  "Asia",
-  "Africa",
-  "New World",
-  "World",
-  "By Development",
-];
+const Continents = ["Cannor", "Haless", "Sarhal", "Aelantir", "Halann"];
 const AllBestTimes = () => {
   const { regionnames } = useDataContext();
   const { setisitloading } = useGameContext();
@@ -35,23 +28,16 @@ const AllBestTimes = () => {
       settscores(data.BestTimes);
     }
     besttimes();
-    const localstorage = localStorage.getItem("PersonalBestTimes");
+    const localstorage = localStorage.getItem("PersonalBestTimesanbennar");
     if (localstorage) {
       const temp = JSON.parse(localstorage);
-      if (temp.length !== 6) {
-        localStorage.setItem(
-          "PersonalBestTimes",
-          JSON.stringify(temp.push(Array(11).fill([0, 0])))
-        );
-        setpersonalscores(temp);
-      } else {
-        setpersonalscores(temp);
-      }
+
+      setpersonalscores(temp);
     } else {
-      const temp = [14, 18, 9, 8, 7, 11].map((len) =>
+      const temp = [30, 30, 30, 30, 30, 30].map((len) =>
         Array.from({ length: len }, () => [0, 0])
       );
-      localStorage.setItem("PersonalBestTimes", JSON.stringify(temp));
+      localStorage.setItem("PersonalBestTimesanbennar", JSON.stringify(temp));
       setpersonalscores(temp);
     }
   }, []);

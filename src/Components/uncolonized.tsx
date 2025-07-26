@@ -33,6 +33,9 @@ const Uncolonized = ({ countryindex, isitin }: Props) => {
                 )},${Math.floor((Number(rgbs[2]) / 10) * 3)}`
           }
           key={index2}
+          onClick={() => {
+            console.log(countryindex);
+          }}
         ></path>
       );
     });

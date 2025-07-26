@@ -15,7 +15,7 @@ const CurrentCountry = () => {
   const startdate = useRef(0);
   const pathname = usePathname();
   const router = useRouter();
-  const regionlength = countrylist.filter((id) => id < 665).length;
+  const regionlength = countrylist.filter((id) => id < 802).length;
   const answeredlength = answercorrectness.filter((a) => a > 0).length;
   useEffect(() => {
     if (pathname === "/") {
@@ -61,16 +61,16 @@ const CurrentCountry = () => {
         includedones.reduce((a, b) => a + (b === 4 ? 1 : 0), 0),
         includedones.reduce((a, b) => a + (b > 4 ? 1 : 0), 0),
       ];
-      const local = localStorage.getItem("GuessDistribution");
+      const local = localStorage.getItem("GuessDistributionanbennar");
       let guessDistribution: number[][][];
       if (local) {
         guessDistribution = JSON.parse(local);
       } else {
-        guessDistribution = [14, 18, 9, 8, 7, 11].map((len) =>
+        guessDistribution = [30, 30, 30, 30, 30, 30].map((len) =>
           Array.from({ length: len }, () => Array(5).fill(0))
         );
         localStorage.setItem(
-          "GuessDistribution",
+          "GuessDistributionanbennar",
           JSON.stringify(guessDistribution)
         );
       }

@@ -5,17 +5,17 @@ const GuessDistribution = () => {
   const [guessDistribution, setGuessDistribution] = useState<number[][][]>([]);
   const [amountofplays, setamountofplays] = useState(0);
   useEffect(() => {
-    const localstorage = localStorage.getItem("GuessDistribution");
+    const localstorage = localStorage.getItem("GuessDistributionanbennar");
     if (localstorage) {
       setGuessDistribution(JSON.parse(localstorage));
     } else {
-      const temp = [14, 18, 9, 8, 7].map((len) =>
+      const temp = [30, 30, 30, 30, 30, 30].map((len) =>
         Array.from({ length: len }, () => Array(5).fill(0))
       );
-      localStorage.setItem("GuessDistribution", JSON.stringify(temp));
+      localStorage.setItem("GuessDistributionanbennar", JSON.stringify(temp));
       setGuessDistribution(temp);
     }
-    const timesplayed = localStorage.getItem("TimesPlayed");
+    const timesplayed = localStorage.getItem("TimesPlayedanbennar");
     if (timesplayed) {
       setamountofplays(Number(timesplayed));
     }

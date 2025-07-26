@@ -72,7 +72,7 @@ export default function SvgMap() {
               <>
                 <TransformComponent>
                   <svg
-                    className="  h-auto max-h-[70vh] min-h-[50vh] bg-[rgb(0,0,200)]"
+                    className="  h-auto max-h-[70vh] min-h-[50vh] bg-[rgb(70,70,220)]"
                     style={
                       pathname === "/custom-region"
                         ? {
@@ -91,14 +91,7 @@ export default function SvgMap() {
                     width="100%"
                     height="100%"
                   >
-                    {Array.from({ length: 24 }, (_, i) => i + 665).map((i) => (
-                      <Uncolonized
-                        countryindex={i}
-                        key={i}
-                        isitin={countrylist.includes(i)}
-                      ></Uncolonized>
-                    ))}
-                    {Array.from({ length: 10 }, (_, i) => i + 689).map((i) => (
+                    {Array.from({ length: 25 }, (_, i) => i + 802).map((i) => (
                       <Uncolonized
                         countryindex={i}
                         key={i}
@@ -111,7 +104,6 @@ export default function SvgMap() {
                       setReverseCircle={setReverseCircle}
                     ></AllCountries>
                     <Provinces></Provinces>
-                    {/* <AreaOutlines></AreaOutlines> */}
                     {correctCircles.map((dets, index) => (
                       <CorrectGuessCircle
                         key={index}

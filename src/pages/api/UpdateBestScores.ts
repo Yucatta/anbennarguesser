@@ -30,7 +30,7 @@ export default async function UpdateTimes(
     await s3Client.send(
       new PutObjectCommand({
         Bucket: BUCKET_NAME,
-        Key: "besttimes.json",
+        Key: "anbennartimes.json",
         Body: JSON.stringify(body),
         ContentType: "application/json",
       })
