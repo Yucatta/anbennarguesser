@@ -3,11 +3,9 @@ import { createContext, useContext } from "react";
 
 type DataContextType = {
   emptylands: number[];
-  areapaths: Array<[number, string[]]>;
   countries: string[][];
   countryprovinces: number[][];
   countryoutlines: Array<[number, string[]]>;
-  terraincolors: Array<[number, string]>;
   paths: string[][];
   regions: number[][][][];
   regionnames: string[][];
