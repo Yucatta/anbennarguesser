@@ -14,14 +14,8 @@ const AllCountries = ({
   setCorrectCircles,
   setReverseCircle,
 }: Props) => {
-  const {
-    paths,
-    countryoutlines,
-    countries,
-    countryprovinces,
-    emptylands,
-    regions,
-  } = useDataContext();
+  const { paths, countryoutlines, countries, countryprovinces, regions } =
+    useDataContext();
   const { currentregion, countrylist } = useGameContext();
   const { setcorrectanswer, setanswercorrectness, setfailed } = useMapContext();
   const correctanswerref = useRef<number[]>([-1, -1]);
@@ -114,7 +108,6 @@ const AllCountries = ({
     );
   }, [
     paths,
-    emptylands,
     countries,
     countryprovinces,
     countryoutlines,
