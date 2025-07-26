@@ -2,7 +2,7 @@ import { useDataContext } from "@/context/DataContext";
 import React, { useMemo } from "react";
 
 const Provinces = () => {
-  const { paths, emptylands, countryprovinces } = useDataContext();
+  const { paths, countryprovinces } = useDataContext();
   const Provincememo = useMemo(() => {
     return (
       <>
@@ -45,7 +45,7 @@ const Provinces = () => {
         ))}
       </>
     );
-  }, [paths, emptylands, countryprovinces]);
+  }, [paths, countryprovinces]);
   return <>{Provincememo}</>;
 };
 

@@ -13,14 +13,8 @@ import {
 import { useMapContext } from "@/context/MapContext";
 
 export default function AnnotationWrapper() {
-  const {
-    paths,
-    countryoutlines,
-    countries,
-    countryprovinces,
-    emptylands,
-    regions,
-  } = useDataContext();
+  const { paths, countryoutlines, countries, countryprovinces, regions } =
+    useDataContext();
   const { currentregion } = useGameContext();
   const { setcorrectanswer, setanswercorrectness } = useMapContext();
   const svgRef = useRef<ReactZoomPanPinchContentRef | null>(null);
@@ -76,7 +70,6 @@ export default function AnnotationWrapper() {
     }
   }, [
     paths,
-    emptylands,
     countries,
     countryprovinces,
     countryoutlines,
