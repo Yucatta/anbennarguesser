@@ -17,8 +17,6 @@ interface Props {
 }
 const RegionSelect = ({ regionselect }: Props) => {
   const { regionnames, regions } = useDataContext();
-  // const [regionnames, setnames] = useState<string[][] | null>(null);
-  // const [regions, setregions] = useState<number[][][][] | null>(null);
 
   const {
     setcurrentregion,
@@ -30,6 +28,8 @@ const RegionSelect = ({ regionselect }: Props) => {
   } = useGameContext();
   const router = useRouter();
 
+  // const [regionnames, setnames] = useState<string[][] | null>(null);
+  // const [regions, setregions] = useState<number[][][][] | null>(null);
   // useEffect(() => {
   //   async function FetchData() {
   //     const response = await fetch("regions.json");

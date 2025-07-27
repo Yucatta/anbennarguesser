@@ -2,7 +2,7 @@ import json
 with open("regions.json",mode="r") as f:
     regions = json.load(f)
 def appendtocont(index,count):
-    indexofunc = next((i for i, id in enumerate(regions[4][index][2]) if id > 664), -1)
+    indexofunc = next((i for i, id in enumerate(regions[4][index][2]) if id > 801), -1)
     templist = regions[4][index][2][0:count]
     for id in regions[4][index][2][indexofunc:]:
         templist.append(id)
@@ -24,7 +24,7 @@ appendtocont(6,100)
 appendtocont(6,200)
 appendtocont(6,300)
 appendtocont(6,400)
-with open("tempregions.json",mode="w") as f:
+with open("regions.json",mode="w") as f:
     json.dump(regions,f,indent=2)
 # print(regions)
 
