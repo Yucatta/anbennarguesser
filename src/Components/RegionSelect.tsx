@@ -3,7 +3,7 @@ import { useDataContext } from "@/context/DataContext";
 import { useGameContext } from "@/context/GameContext";
 import { useRouter } from "next/navigation";
 import React from "react";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 const Continents = [
   "Cannor",
   "Haless",
@@ -16,7 +16,7 @@ interface Props {
   regionselect?: () => void;
 }
 const RegionSelect = ({ regionselect }: Props) => {
-  const { regionnames, regions } = useDataContext();
+  // const { regionnames, regions } = useDataContext();
 
   const {
     setcurrentregion,
@@ -28,25 +28,25 @@ const RegionSelect = ({ regionselect }: Props) => {
   } = useGameContext();
   const router = useRouter();
 
-  // const [regionnames, setnames] = useState<string[][] | null>(null);
-  // const [regions, setregions] = useState<number[][][][] | null>(null);
-  // useEffect(() => {
-  //   async function FetchData() {
-  //     const response = await fetch("regions.json");
-  //     const text: [string, number[], number[]][][] = await response.json();
-  //     const names = text.map((continent, index) =>
-  //       continent.map((region) => region[0])
-  //     );
-  //     setregions(
-  //       text.map((continent, index) =>
-  //         continent.map((region) => [region[1], region[2]])
-  //       )
-  //     );
+  const [regionnames, setnames] = useState<string[][] | null>(null);
+  const [regions, setregions] = useState<number[][][][] | null>(null);
+  useEffect(() => {
+    async function FetchData() {
+      const response = await fetch("regions.json");
+      const text: [string, number[], number[]][][] = await response.json();
+      const names = text.map((continent, index) =>
+        continent.map((region) => region[0])
+      );
+      setregions(
+        text.map((continent, index) =>
+          continent.map((region) => [region[1], region[2]])
+        )
+      );
 
-  //     setnames(names);
-  //   }
-  //   FetchData();
-  // }, []);
+      setnames(names);
+    }
+    FetchData();
+  }, []);
 
   function regionclick(indexofregion: number[]) {
     if (!regions) return;

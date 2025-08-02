@@ -19,14 +19,14 @@ const AllCountries = ({
   const { currentregion, countrylist } = useGameContext();
   const { setcorrectanswer, setanswercorrectness, setfailed } = useMapContext();
   const correctanswerref = useRef<number[]>([-1, -1]);
-  const answercorrectness = useRef<number[]>(Array(665).fill(0));
+  const answercorrectness = useRef<number[]>(Array(802).fill(0));
 
   function GetCorrectAnswer(list: number[], badlist: number[]) {
     const filteredids = list
       .filter((countryid) => countryid < 802)
       .filter((countryid) => !badlist.includes(countryid));
     const a = filteredids[Math.floor(Math.random() * filteredids.length)];
-    return a ? a : -1;
+    return typeof a === "number" ? a : -1;
   }
 
   useEffect(() => {
