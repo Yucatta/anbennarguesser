@@ -70,7 +70,7 @@ const Header = () => {
           setisitloading(true);
         }}
       >
-        <div>EU4 Guessr</div>
+        <div>Anbennar Guessr</div>
       </Link>
     </div>
   );
