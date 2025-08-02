@@ -1,6 +1,6 @@
 import json,csv
 
-continents = ["Cannor","Serpentspine","Haless","Sarhal","Aelantir"]
+continents = ["Cannor","Haless","Sarhal","Aelantir",""]
 
 with open("regions.json",mode="r") as f:
     regions = json.load(f)

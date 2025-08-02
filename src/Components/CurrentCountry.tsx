@@ -80,7 +80,7 @@ const CurrentCountry = () => {
             thisDistrubiton[index])
       );
       localStorage.setItem(
-        "GuessDistribution",
+        "GuessDistributionanbennar",
         JSON.stringify(guessDistribution)
       );
     }
