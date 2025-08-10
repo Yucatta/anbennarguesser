@@ -1,6 +1,16 @@
 import json
 with open("regions.json",mode="r") as f:
     regions = json.load(f)
+
+for i,continent in enumerate(regions):
+    for j,region in enumerate(continent):
+        temp = []
+        for country in region[2]:
+            if not country in temp:
+                temp.append(country)
+        temp.sort(key=lambda id:id)
+        regions[i][j][2] = temp
+
 def appendtocont(index,count):
     indexofunc = next((i for i, id in enumerate(regions[4][index][2]) if id > 801), -1)
     templist = regions[4][index][2][0:count]
